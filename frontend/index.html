@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Reconciliation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>ReconAI</h1>
+            <p>Intelligent Payment Reconciliation Engine</p>
+        </header>
+        
+        <main>
+            <section class="controls glass-panel">
+                <button id="btnGenerate" class="btn primary">Generate Synthetic Data</button>
+                <button id="btnReconcile" class="btn secondary" disabled>Run Reconciliation</button>
+                <div id="statusMessage" class="status-message"></div>
+            </section>
+
+            <section class="dashboard">
+                <div class="stat-card glass-panel">
+                    <h3>Total Transactions</h3>
+                    <p id="statTxnCount" class="stat-number">0</p>
+                </div>
+                <div class="stat-card glass-panel">
+                    <h3>Total Settlements</h3>
+                    <p id="statStlCount" class="stat-number">0</p>
+                </div>
+                <div class="stat-card glass-panel highlight">
+                    <h3>Matched Records</h3>
+                    <p id="statMatched" class="stat-number">0</p>
+                </div>
+                <div class="stat-card glass-panel danger">
+                    <h3>Anomalies Found</h3>
+                    <p id="statAnomalies" class="stat-number">0</p>
+                </div>
+                <div class="stat-card glass-panel warning">
+                    <h3>Mismatch %</h3>
+                    <p id="statMismatchPct" class="stat-number">0%</p>
+                </div>
+            </section>
+
+            <section class="results-section glass-panel">
+                <div class="tabs">
+                    <button class="tab-btn active" data-target="anomaliesList">Identified Anomalies</button>
+                    <button class="tab-btn" data-target="matchesList">Sample Matches</button>
+                </div>
+                
+                <div id="anomaliesList" class="tab-content active">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Txn ID</th>
+                                <th>Stl ID</th>
+                                <th>Txn Amt</th>
+                                <th>Stl Amt</th>
+                                <th>AI Explanation</th>
+                            </tr>
+                        </thead>
+                        <tbody id="anomaliesTableBody">
+                            <tr><td colspan="6" class="empty-state">No anomalies to display</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="matchesList" class="tab-content">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Txn ID</th>
+                                <th>Stl ID</th>
+                                <th>Amount</th>
+                                <th>AI Explanation</th>
+                            </tr>
+                        </thead>
+                        <tbody id="matchesTableBody">
+                            <tr><td colspan="5" class="empty-state">No matches to display</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
